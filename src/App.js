@@ -4,9 +4,11 @@ import DrugsList from './components/drugsList';
 import Logo from './components/logo';
 import Search from './components/search'
 import SelectedDrugs from './components/selectedDrugs'
-import Map from './components/map';
+import GoogleMap from './components/map';
 //bootstrap
 import { Navbar, Jumbotron, Button } from 'react-bootstrap';
+
+import Demo from './components/local'
 
 
 class App extends Component {
@@ -14,9 +16,12 @@ class App extends Component {
     super(props);
     this.state = {
       filterText: '',
-      picked: []
+      picked: [],
+      lat: '',
+      lon: ''
     }
   }
+
 
   filterUpdate(value){
     this.setState({
@@ -52,10 +57,11 @@ class App extends Component {
           filterText={this.state.filterText}
           addDrug={this.addDrug.bind(this)}
           />
+          <Demo />
         </div>
 
         <div className='col-md-8'>
-          <Map />
+          <GoogleMap   />
           
         </div>
       </div>
