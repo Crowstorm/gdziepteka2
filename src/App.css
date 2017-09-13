@@ -1,0 +1,41 @@
+.App {
+  text-align: center;
+}
+
+ul{
+  list-style: none;
+}
+
+/* wlasne */
+
+/* User Container */
+
+
+.logo{
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+.pickedProducts{
+  border: 1px solid red;
+
+}
+
+.btn-drug{
+  float: right;
+}
+
+.btn-send{
+  display: block;
+}
+
+
+
+
+/* Map container */
+#googleMap{
+width: 100%;
+height: 100%
+}
