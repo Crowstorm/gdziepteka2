@@ -37,6 +37,7 @@ import {geolocated} from 'react-geolocated';
     }
 
     render(){
+        //skasuj
         console.log(this.props.coords)
         console.log(this.props, 'Propsy');
         

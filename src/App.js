@@ -63,8 +63,7 @@ class App extends Component {
         </div>
 
         <div className='col-md-8'>
-          {/* <Demo /> */}
-          <GoogleMap lat={55}  lon={44} />
+          <GoogleMap />
           
         </div>
       </div>

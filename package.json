@@ -12,6 +12,7 @@
     "react-gmaps": "^1.6.0",
     "react-google-maps": "^7.3.0",
     "react-redux": "^5.0.6",
+    "react-router": "^4.0.0",
     "react-scripts": "1.0.13",
     "redux": "^3.7.2"
   },
