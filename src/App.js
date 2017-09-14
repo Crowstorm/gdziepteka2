@@ -6,7 +6,7 @@ import Search from './components/search'
 import SelectedDrugs from './components/selectedDrugs'
 import GoogleMap from './components/map';
 //bootstrap
-import { Navbar, Jumbotron, Button } from 'react-bootstrap';
+//import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 
 import Demo from './components/local'
 
@@ -37,8 +37,10 @@ class App extends Component {
     })
   }
 
+  
+
   render() {
-   
+    console.log('Lokacja', this.props.coords)
     return(
       <div>
         <div className='col-md-4 search'>
@@ -57,11 +59,12 @@ class App extends Component {
           filterText={this.state.filterText}
           addDrug={this.addDrug.bind(this)}
           />
-          <Demo />
+         
         </div>
 
         <div className='col-md-8'>
-          <GoogleMap   />
+          {/* <Demo /> */}
+          <GoogleMap lat={55}  lon={44} />
           
         </div>
       </div>

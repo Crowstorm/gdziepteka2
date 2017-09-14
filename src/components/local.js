@@ -1,20 +1,11 @@
 import React from 'react';
 import {geolocated} from 'react-geolocated';
+
  
 class Demo extends React.Component {
-  // constructor(props) {
-  //   super(props);
-
-  //   this.state = { latitude: '' };
-  // }
-
-  // setLatitude(){
-  //   this.setState({
-  //     latitude: this.props.coords.latitude
-  //   })
-  // }
   render() {
-    return !this.props.isGeolocationAvailable
+    console.log('hello')
+    return  !this.props.isGeolocationAvailable
       ? <div>Your browser does not support Geolocation</div>
       : !this.props.isGeolocationEnabled
         ? <div>Geolocation is not enabled</div>
@@ -24,7 +15,7 @@ class Demo extends React.Component {
               <tr><td>latitude</td><td>{this.props.coords.latitude}</td></tr>
               <tr><td>longitude</td><td>{this.props.coords.longitude}</td></tr>
             </tbody>
-          </table>
+          </table> 
           : <div>Getting the location data&hellip; </div>;
   }
 }

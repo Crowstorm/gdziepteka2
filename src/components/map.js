@@ -1,51 +1,59 @@
-// import React from 'react';
-
-// class GoogleMap extends React.Component{
-//     render(){
-//         return(
-//             //this.refs.map
-//             <div ref='map' id='googleMap'> <img src='http://i.imgur.com/ro5bn3v.png'></img></div>
-//         )
-//     }
-// }
-
-// export default GoogleMap;
-
 
 import React from 'react';
+import {geolocated} from 'react-geolocated';
 
-export default class GoogleMap extends React.Component{
-    constructor(){
+
+ class GoogleMap extends React.Component{
+    constructor(props){
         super();
         this.state = {
             zoom: 13,
             maptype: 'roadmap',
-            lat: -33.8688,
-            lng: 141.2195
+            lat: 33,
+            lng: 44
         }
     }
 
-    componentDidMount(){
+
+    // componentDidMount(){
+    //     let map = new window.google.maps.Map(document.getElementById('map'), {
+    //         center: {
+    //             lat: this.state.lat, 
+    //             lng: this.state.lng},
+    //         zoom: 13,
+    //         mapTypeId: 'roadmap',
+    //     })  
+    // }
+
+    componentWillReceiveProps(nextProps){
+        console.log('will update')
         let map = new window.google.maps.Map(document.getElementById('map'), {
             center: {
-                lat: this.state.lat, 
-                lng: this.state.lng},
-            zoom: 13,
+                lat: nextProps.coords.latitude, 
+                lng: nextProps.coords.longitude},
+            zoom: 15,
             mapTypeId: 'roadmap',
-        })
-        console.log('loaded')
-       
+        })  
     }
 
     render(){
+        console.log(this.props.coords)
+        console.log(this.props, 'Propsy');
+        
         return(
             <div>
                 <div id='map' />
             </div>
         )
+        
     }
 }
-
+export default geolocated({
+    positionOptions: {
+      enableHighAccuracy: false,
+    },
+    userDecisionTimeout: 5000
+  })(GoogleMap); 
 
 
 
