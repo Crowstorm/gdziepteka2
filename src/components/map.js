@@ -7,66 +7,97 @@ import {geolocated} from 'react-geolocated';
 
 
     componentDidMount(){
-        let map = new window.google.maps.Map(document.getElementById('map'), {
-            center: {
-                lat: 33, 
-                lng: 44},
-            zoom: 13,
-            mapTypeId: 'roadmap',
-        })  
+        var map, infoWindow;
+        function initMap() {
+          map = new window.google.maps.Map(document.getElementById('map'), {
+            center: {lat: -34.397, lng: 150.644},
+            zoom: 6
+          });
+          infoWindow = new window.google.maps.InfoWindow;
+  
+          // Try HTML5 geolocation.
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+              var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+              };
+  
+              infoWindow.setPosition(pos);
+              infoWindow.setContent('Location found.');
+              infoWindow.open(map);
+              map.setCenter(pos);
+            }, function() {
+              handleLocationError(true, infoWindow, map.getCenter());
+            });
+          } else {
+            // Browser doesn't support Geolocation
+            handleLocationError(false, infoWindow, map.getCenter());
+          }
+        }
+  
+        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+          infoWindow.setPosition(pos);
+          infoWindow.setContent(browserHasGeolocation ?
+                                'Error: The Geolocation service failed.' :
+                                'Error: Your browser doesn\'t support geolocation.');
+          infoWindow.open(map);
+        }
     }
 
-    componentWillReceiveProps(nextProps){
-         let map = new window.google.maps.Map(document.getElementById('map'), {
-            center: {
-                lat: nextProps.coords.latitude, 
-                lng: nextProps.coords.longitude},
-            zoom: 15,
-            mapTypeId: 'roadmap',
-        }) 
 
-        //marker on current position
-        var marker = new window.google.maps.Marker({
-            position: {
-                lat: nextProps.coords.latitude, 
-                lng: nextProps.coords.longitude
-            },
-            map: map,
-            draggable:true,
-            title: "You're here"
-          });
+    // //sprawdz inne metody
+    // componentWillReceiveProps(nextProps){
+    //      let map = new window.google.maps.Map(document.getElementById('map'), {
+    //         center: {
+    //             lat: nextProps.coords.latitude, 
+    //             lng: nextProps.coords.longitude},
+    //         zoom: 15,
+    //         mapTypeId: 'roadmap',
+    //     }) 
+
+    //     //marker on current position
+    //     var marker = new window.google.maps.Marker({
+    //         position: {
+    //             lat: nextProps.coords.latitude, 
+    //             lng: nextProps.coords.longitude
+    //         },
+    //         map: map,
+    //         draggable:true,
+    //         title: "You're here"
+    //       });
           
-          //marker listeners
-          window.google.maps.event.addListener(marker, 'dragstart', function() {
-            console.log('marker dotkniety');
-            document.getElementById('test').innerHTML = '<p>Currently dragging marker...</p>';
-        });
+    //       //marker listeners
+    //       window.google.maps.event.addListener(marker, 'dragstart', function() {
+    //         console.log('marker dotkniety');
+    //         document.getElementById('test').innerHTML = '<p>Currently dragging marker...</p>';
+    //     });
 
-        window.google.maps.event.addListener(marker, 'dragend', function(e) {
-           console.log('marker upuszczony');
-           document.getElementById('test').innerHTML = '<p>Do wyeksportowania: Current Lat: ' + e.latLng.lat().toFixed(3) + ' Current Lng: ' + e.latLng.lng().toFixed(3) + '</p>'
-        });
+    //     window.google.maps.event.addListener(marker, 'dragend', function(e) {
+    //        console.log('marker upuszczony');
+    //        document.getElementById('test').innerHTML = '<p>Do wyeksportowania: Current Lat: ' + e.latLng.lat().toFixed(3) + ' Current Lng: ' + e.latLng.lng().toFixed(3) + '</p>'
+    //     });
 
         //search bar dla mapy
-        var input = document.getElementById('pac-input');
-        var searchBox = new window.google.maps.places.SearchBox(input);
-        map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(input);
+        // var input = document.getElementById('pac-input');
+        // var searchBox = new window.google.maps.places.SearchBox(input);
+        // map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(input);
 
-        // Bias the SearchBox results towards current map's viewport.
-        map.addListener('bounds_changed', function() {
-            searchBox.setBounds(map.getBounds());
-          });
+        // // Bias the SearchBox results towards current map's viewport.
+        // map.addListener('bounds_changed', function() {
+        //     searchBox.setBounds(map.getBounds());
+        //   });
 
 
-        var markers = [];
-        // Listen for the event fired when the user selects a prediction and retrieve
-        // more details for that place.
-        searchBox.addListener('places_changed', function() {
-            var places = searchBox.getPlaces();
-            if (places.length == 0) {
-              return;
-            }
-        })
+        // var markers = [];
+        // // Listen for the event fired when the user selects a prediction and retrieve
+        // // more details for that place.
+        // searchBox.addListener('places_changed', function() {
+        //     var places = searchBox.getPlaces();
+        //     if (places.length == 0) {
+        //       return;
+        //     }
+        // })
 
         // // Clear out the old markers.
         // markers.forEach(function(marker) {
@@ -90,7 +121,7 @@ import {geolocated} from 'react-geolocated';
         //     scaledSize: new window.google.maps.Size(25, 25)
         // };  
         // })  
-    }
+    
 
     render(){
         //skasuj
@@ -129,27 +160,3 @@ export default geolocated({
 
 
 
-
-
-
-// import React from 'react';
-
-// class GoogleMaps extends React.Component{
-//     componentDidMount(){
-//         new google.maps.Map(this.refs.map, {
-//             zoom: 12,
-//             center:{
-//                 lat: 33, //this.props.lat,
-//                 lng: 150//this.props.lon
-//             }
-//         })
-//     }
-
-//     render(){
-//         return(
-//             <div ref='map'></div>
-//         )
-//     }
-// }
-
-// export default GoogleMaps;

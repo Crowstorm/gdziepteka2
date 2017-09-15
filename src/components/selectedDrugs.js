@@ -19,7 +19,6 @@ export default  ({drugs, picked, deleteDrug, sendDrugs}) => {
     // console.log('data: ', drugs);
 
     const pickedDrugs = picked.map(id => {
-      // id = id-1;
        console.log(id);
         const name = drugs[id].name;
         // console.log(name);

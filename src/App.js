@@ -5,6 +5,7 @@ import Logo from './components/logo';
 import Search from './components/search'
 import SelectedDrugs from './components/selectedDrugs'
 import GoogleMap from './components/map';
+// import GoogleMap from './components/googleMap'
 import {BrowserRouter, Route} from 'react-router-dom'
 //bootstrap
 //import { Navbar, Jumbotron, Button } from 'react-bootstrap';
@@ -90,7 +91,7 @@ class App extends Component {
         </div>
 
         <div className='col-md-8'>
-          {/* <GoogleMap />   */}
+          <GoogleMap />
         </div>
       </div>
     )
