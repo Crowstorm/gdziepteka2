@@ -13,6 +13,9 @@ export default [
         name:"ketonal opak. 10 szt polek"
       },{id:4,
         name:"apap opak. 5 szt aflofarm"
+      },
+      {id:5,
+        name:"Viagra dla Wiktora"
       },{id: 6,
         name:"panadol opak. 2 szt polek"
       },{id: 7,
