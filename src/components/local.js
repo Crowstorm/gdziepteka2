@@ -4,7 +4,6 @@ import {geolocated} from 'react-geolocated';
  
 class Demo extends React.Component {
   render() {
-    console.log('hello')
     return  !this.props.isGeolocationAvailable
       ? <div>Your browser does not support Geolocation</div>
       : !this.props.isGeolocationEnabled

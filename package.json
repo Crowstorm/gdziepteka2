@@ -11,6 +11,7 @@
     "react-geolocated": "^2.0.0",
     "react-gmaps": "^1.6.0",
     "react-google-maps": "^7.3.0",
+    "react-modal": "^2.3.2",
     "react-redux": "^5.0.6",
     "react-router": "^4.0.0",
     "react-scripts": "1.0.13",
