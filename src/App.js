@@ -19,7 +19,9 @@ class App extends Component {
       filterText: '',
       picked: [],
       lat: '',
-      lon: ''
+      lon: '',
+      count: 0,
+      pickedDrugs: []
     }
   }
 
@@ -31,13 +33,35 @@ class App extends Component {
   }
 
   addDrug(id){
-    // console.log('adding id', id);
+    const {picked} = this.state;
+    console.log('adding id', id);
     const pickedDrugList = this.state.picked.concat([id]);
     this.setState({
       picked: pickedDrugList
     })
   }
 
+  //chuj kurwa nie dziala jak powinno popraw
+  deleteDrug(id){
+    //const {count} = this.state
+    const {picked} = this.state;
+    console.log('kliniety id to', id)
+    var index = picked.indexOf(id);
+    console.log('index to',index);
+    const newDrugs = [
+      ...picked.slice(0, index),
+      ...picked.slice(index+1)
+    ]
+    this.setState({
+      picked: newDrugs
+    })
+    console.log('usuwam id', id, 'nowa tablica new drugs', {newDrugs})
+  }
+
+  sendDrugs(){
+    const {picked, lat, lon} = this.state
+    console.log('Wysylam leki o id: ', {picked}, 'Coordynaty uzytkownika: ', {lat}, '{}', {lon} )
+  }
   
 
   render() {
@@ -53,6 +77,8 @@ class App extends Component {
           <SelectedDrugs
           picked={this.state.picked}
           drugs={this.props.drugs} 
+          deleteDrug={this.deleteDrug.bind(this)}
+          sendDrugs={this.sendDrugs.bind(this)}
           />
 
           <DrugsList
@@ -64,7 +90,7 @@ class App extends Component {
         </div>
 
         <div className='col-md-8'>
-          <GoogleMap />  
+          {/* <GoogleMap />   */}
         </div>
       </div>
     )

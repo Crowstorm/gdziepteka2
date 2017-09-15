@@ -14,16 +14,17 @@ const customStyles = {
     }
   };
 
-export default ({drugs, picked}) => {
+export default  ({drugs, picked, deleteDrug, sendDrugs}) => {
     
     // console.log('data: ', drugs);
 
     const pickedDrugs = picked.map(id => {
+      // id = id-1;
        console.log(id);
-        const name = drugs[id-1].name;
+        const name = drugs[id].name;
         // console.log(name);
         return(
-            <li key={id}>{name}</li>
+            <li onClick={()=>deleteDrug(id)} key={id}>{name}<button  className='btn'>Delete</button></li>
         )
      }) 
     return(
@@ -36,7 +37,7 @@ export default ({drugs, picked}) => {
                     {pickedDrugs}
                     <div className='row'>
                     {/* {przekaz propsy do buttona} */}
-                    <button className='btn btn-primary btn-send'>Send</button>
+                    <button onClick={(id) => sendDrugs(id)} className='btn btn-primary btn-send'>Send</button>
                     </div>
                 </ul>
             </div>

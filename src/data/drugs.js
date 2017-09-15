@@ -1,17 +1,17 @@
 export default [
         {
-          id: 1,
+          id: 0,
         name:"ibuprom opak 10 szt aflofarm."
       },{
-        id: 2,
+        id: 1,
         name:"ibuprom opak. 20 szt aflofarm"
       },{ 
-        id: 3,
+        id: 2,
         name:"aspiryna opak. 25 szt polek"
       },{
-        id: 4,
+        id: 3,
         name:"ketonal opak. 10 szt polek"
-      },{id:5,
+      },{id:4,
         name:"apap opak. 5 szt aflofarm"
       },{id: 6,
         name:"panadol opak. 2 szt polek"

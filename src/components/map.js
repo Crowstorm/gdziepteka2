@@ -4,35 +4,27 @@ import {geolocated} from 'react-geolocated';
 
 
  class GoogleMap extends React.Component{
-    constructor(props){
-        super();
-        this.state = {
+
+
+    componentDidMount(){
+        let map = new window.google.maps.Map(document.getElementById('map'), {
+            center: {
+                lat: 33, 
+                lng: 44},
             zoom: 13,
-            maptype: 'roadmap',
-            lat: 33,
-            lng: 44
-        }
+            mapTypeId: 'roadmap',
+        })  
     }
 
-
-    // componentDidMount(){
-    //     let map = new window.google.maps.Map(document.getElementById('map'), {
-    //         center: {
-    //             lat: this.state.lat, 
-    //             lng: this.state.lng},
-    //         zoom: 13,
-    //         mapTypeId: 'roadmap',
-    //     })  
-    // }
-
     componentWillReceiveProps(nextProps){
-        let map = new window.google.maps.Map(document.getElementById('map'), {
+         let map = new window.google.maps.Map(document.getElementById('map'), {
             center: {
                 lat: nextProps.coords.latitude, 
                 lng: nextProps.coords.longitude},
             zoom: 15,
             mapTypeId: 'roadmap',
-        })  
+        }) 
+
         //marker on current position
         var marker = new window.google.maps.Marker({
             position: {
@@ -43,6 +35,7 @@ import {geolocated} from 'react-geolocated';
             draggable:true,
             title: "You're here"
           });
+          
           //marker listeners
           window.google.maps.event.addListener(marker, 'dragstart', function() {
             console.log('marker dotkniety');
