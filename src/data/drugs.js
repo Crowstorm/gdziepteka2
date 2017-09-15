@@ -63,20 +63,20 @@ export default [
         name:"apap opak. 1 szt aflofarm"
       },{id: 30,
         name:"panadol opak. 2 szt cośtam"
-      },{id: 32,
+      },{id: 31,
         name:"panadol opak. 2 szt polek"
-      },{id: 33,
+      },{id: 32,
         name:"ibuprom opak 4 szt aflofarm."
-      },{id: 34,
+      },{id: 33,
         name:"ibuprom opak. 7 szt aflofarm"
-      },{ id: 35,
+      },{ id: 34,
         name:"aspiryna opak. 8 szt polek"
-      },{id: 36,
+      },{id: 35,
         name:"ketonal opak. 9 szt polek"
-      },{id: 37,
+      },{id: 36,
         name:"apap opak. 1 szt aflofarm"
-      },{id: 38,
+      },{id: 37,
         name:"panadol opak. 2 szt cośtam"
-      }];
+      },];
 
 

@@ -44,7 +44,7 @@ import {geolocated} from 'react-geolocated';
                    console.log('marker upuszczony');
                    document.getElementById('test').innerHTML = '<p>Do wyeksportowania: Current Lat: ' + e.latLng.lat().toFixed(3) + ' Current Lng: ' + e.latLng.lng().toFixed(3) + '</p>'
                 });
-                
+
         }, function() {
           handleLocationError(true, infoWindow, map.getCenter());
         });
@@ -80,12 +80,7 @@ import {geolocated} from 'react-geolocated';
         )
     }
 }
-export default geolocated({
-    positionOptions: {
-      enableHighAccuracy: false,
-    },
-    userDecisionTimeout: 5000
-  })(GoogleMap); 
+export default GoogleMap 
 
 
 

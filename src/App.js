@@ -5,12 +5,10 @@ import Logo from './components/logo';
 import Search from './components/search'
 import SelectedDrugs from './components/selectedDrugs'
 import GoogleMap from './components/map';
-// import GoogleMap from './components/googleMap'
 import {BrowserRouter, Route} from 'react-router-dom'
 //bootstrap
 //import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 
-import Demo from './components/local'
 
 
 class App extends Component {
